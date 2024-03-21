@@ -1,0 +1,30 @@
+# Arquivos de compilação do Visual Studio
+.vs/
+bin/
+obj/
+
+# Arquivos de dependências
+node_modules/
+
+# Arquivos de registro e cache
+*.log
+*.cache
+
+# Arquivos de compilação
+*.dll
+*.exe
+
+# Arquivos de saída de depuração
+*.pdb
+
+# Arquivos de projeto
+*.user
+*.vscode
+*.suo
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos de backup
+*~
+*.bak
