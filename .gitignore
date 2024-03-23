@@ -21,10 +21,9 @@ node_modules/
 *.user
 *.vscode
 *.suo
-
 # Arquivos temporários
 *.tmp
-
+Temp.txt
 # Arquivos de backup
 *~
 *.bak

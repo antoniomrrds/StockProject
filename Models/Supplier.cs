@@ -29,7 +29,7 @@ namespace StockProject.Models
         [DisplayName("Data de Cadastro")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public string QRCode { get; set; } = string.Empty;
     }
