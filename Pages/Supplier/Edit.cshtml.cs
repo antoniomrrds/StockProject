@@ -35,8 +35,6 @@ namespace StockProject.Pages.Supplier
             {
                 return NotFound();
             }
-            Supplier.QRCode = $"{Supplier.CNPJ}/{Supplier.CEP}/CAD.${Supplier.CreatedAt}";
-
             Supplier = supplier;
             return Page();
         }
@@ -47,7 +45,7 @@ namespace StockProject.Pages.Supplier
             {
                 return Page();
             }
-
+            Supplier.QRCode = Supplier.GenerateQRCode();
             _context.Attach(Supplier).State = EntityState.Modified;
 
             try

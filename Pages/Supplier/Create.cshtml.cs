@@ -33,8 +33,7 @@ namespace StockProject.Pages.Supplier
             {
                 return Page();
             }
-
-            Supplier.QRCode = $"{Supplier.CNPJ}/{Supplier.CEP}/CAD.${Supplier.CreatedAt}";
+            Supplier.QRCode = Supplier.GenerateQRCode();
 
             _context.Suppliers.Add(Supplier);
             await _context.SaveChangesAsync();

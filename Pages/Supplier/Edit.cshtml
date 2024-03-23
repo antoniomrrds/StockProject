@@ -5,9 +5,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edição</h1>
 
-<h4>Supplier</h4>
+<h4>Fornecedor</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -36,8 +36,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Supplier.CreatedAt" class="control-label"></label>
-                <input asp-for="Supplier.CreatedAt" class="form-control" />
-                <span asp-validation-for="Supplier.CreatedAt" class="text-danger"></span>
+                <input asp-for="Supplier.CreatedAt" class="form-control" readonly />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

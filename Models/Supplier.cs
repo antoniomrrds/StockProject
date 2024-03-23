@@ -29,8 +29,13 @@ namespace StockProject.Models
         [DisplayName("Data de Cadastro")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; private set; } = DateTime.Now;
 
         public string QRCode { get; set; } = string.Empty;
+
+        public string GenerateQRCode()
+        {
+            return $"{CNPJ}/{CEP}/CAD.{CreatedAt}";
+        }
     }
 }
