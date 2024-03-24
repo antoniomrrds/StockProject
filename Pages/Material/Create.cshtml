@@ -2,10 +2,10 @@
 @model StockProject.Pages.Material.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
 <h4>Material</h4>
 <hr />
@@ -15,7 +15,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Material.SupplierId" class="control-label"></label>
-                <select asp-for="Material.SupplierId" class ="form-control" asp-items="ViewBag.SupplierId"></select>
+                <select asp-for="Material.SupplierId" class="form-control" asp-items="ViewBag.SupplierId">
+                    <option value="">Selecione o Fornecedor</option>
+                </select>
+                <span asp-validation-for="Material.SupplierId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">QRCode</label>
+                <input id="qrcode" class="form-control" readonly />
             </div>
             <div class="form-group">
                 <label asp-for="Material.Code" class="control-label"></label>
@@ -43,19 +50,9 @@
                 <span asp-validation-for="Material.Specie" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Material.CreatedAt" class="control-label"></label>
-                <input asp-for="Material.CreatedAt" class="form-control" />
-                <span asp-validation-for="Material.CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Material.CreatedBy" class="control-label"></label>
                 <input asp-for="Material.CreatedBy" class="form-control" />
                 <span asp-validation-for="Material.CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.UpdatedAt" class="control-label"></label>
-                <input asp-for="Material.UpdatedAt" class="form-control" />
-                <span asp-validation-for="Material.UpdatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Material.UpdatedBy" class="control-label"></label>
@@ -63,7 +60,7 @@
                 <span asp-validation-for="Material.UpdatedBy" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -74,5 +71,18 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('#Material_SupplierId').change(function () {
+                var supplierId = $(this).val();
+                $.get('/Material/Create?handler=GetQRCode&id=' + supplierId, function (qrCode) {
+                    $('#qrcode').val(qrCode);
+                });
+            });
+        })
+    </script>
 }

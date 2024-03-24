@@ -43,8 +43,9 @@ namespace StockProject.Models
         [Required(ErrorMessage = "O campo Data de Criação é obrigatório")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; private set; } = DateTime.Now;
 
+        [Required(ErrorMessage = "O campo Criado Por é obrigatório")]
         [StringLength(50, ErrorMessage = "O campo Criado por deve ter no máximo 50 caracteres")]
         [DisplayName("Criado Por")]
         public string CreatedBy { get; set; } = string.Empty;
@@ -52,7 +53,7 @@ namespace StockProject.Models
         [DisplayName("Data de Atualização")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; } = DateTime.Now;
 
         [Required(ErrorMessage = "O campo Atualizado Por é obrigatório")]
         [StringLength(50, ErrorMessage = "O campo Atualizado por deve ter no máximo 50 caracteres")]

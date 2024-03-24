@@ -5,10 +5,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Produtos</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">
+        <i class="bi bi-plus-square"></i>
+        Criar
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -47,44 +50,53 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Material) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FiscalCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Specie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier.Address)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Material)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FiscalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.Address)
+                </td>
+                <td>
+                    <a asp-page="./Edit" class="btn btn-warning btn-sm mr-1" asp-route-id="@item.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a asp-page="./Details" class="btn btn-info btn-sm mr-1" asp-route-id="@item.Id">
+                        <i class="bi bi-info-circle"></i>
+
+                    </a>
+                    <a asp-page="./Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">
+                        <i class="bi bi-trash"></i>
+
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

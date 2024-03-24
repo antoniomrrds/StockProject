@@ -21,14 +21,14 @@ namespace StockProject.Pages.Material
 
         public IActionResult OnGet()
         {
-            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Address");
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name");
+
             return Page();
         }
 
         [BindProperty]
         public StockProject.Models.Material Material { get; set; } = default!;
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -40,6 +40,18 @@ namespace StockProject.Pages.Material
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnGetGetQRCode(int id)
+        {
+            var supplier = _context.Suppliers.FirstOrDefault(s => s.Id == id);
+            if (supplier == null)
+            {
+                return NotFound();
+            }
+
+            var qrcode = supplier.GenerateQRCode();
+            return new JsonResult(qrcode);
         }
     }
 }

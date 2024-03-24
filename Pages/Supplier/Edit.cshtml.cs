@@ -47,6 +47,7 @@ namespace StockProject.Pages.Supplier
             }
             Supplier.QRCode = Supplier.GenerateQRCode();
             _context.Attach(Supplier).State = EntityState.Modified;
+            _context.Entry(Supplier).Property("CreatedAt").IsModified = false;
 
             try
             {

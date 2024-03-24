@@ -1,5 +1,8 @@
-﻿using System.ComponentModel;
+﻿using NuGet.Protocol.Plugins;
+using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace StockProject.Models
 {
@@ -18,11 +21,11 @@ namespace StockProject.Models
         public string Address { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo CNPJ é obrigatório.")]
-        [RegularExpression(@"^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$", ErrorMessage = "Formato de CNPJ inválido.")]
+        [RegularExpression(@"^\d{14}$", ErrorMessage = "O CNPJ deve conter exatamente 14 dígitos.")]
         public string CNPJ { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo CEP é obrigatório.")]
-        [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "Formato de CEP inválido.")]
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "O CEP deve conter exatamente 8 dígitos.")]
         public string CEP { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo Data de Cadastro é obrigatório.")]
@@ -32,10 +35,10 @@ namespace StockProject.Models
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
 
         public string QRCode { get; set; } = string.Empty;
-
         public string GenerateQRCode()
         {
-            return $"{CNPJ}/{CEP}/CAD.{CreatedAt}";
+            return $"{CNPJ}-{CEP}/CAD.{CreatedAt:dd/MM/yyyy}";
         }
+      
     }
 }
