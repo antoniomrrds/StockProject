@@ -5,46 +5,57 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Criar</h1>
+<div class="container my-2">
+    <div class="card shadow-lg">
+        <div class="card-body border-info mb-3">
+            <h1 class="card-title text-center fs-5 mb-3 text-info">Criar Fornecedor</h1>
 
-<h4>Fornecedor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Supplier.Name" class="control-label"></label>
-                <input asp-for="Supplier.Name" class="form-control" />
-                <span asp-validation-for="Supplier.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Supplier.Address" class="control-label"></label>
-                <input asp-for="Supplier.Address" class="form-control" />
-                <span asp-validation-for="Supplier.Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Supplier.CNPJ" class="control-label"></label>
-                <input asp-for="Supplier.CNPJ" class="form-control" />
-                <span asp-validation-for="Supplier.CNPJ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Supplier.CEP" class="control-label"></label>
-                <input asp-for="Supplier.CEP" class="form-control" />
-                <span asp-validation-for="Supplier.CEP" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn mt-2 btn-primary" />
-            </div>
-        </form>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Supplier.Name" class="form-label" style="font-weight: bold; color: #333;">Nome:</label>
+                    <input asp-for="Supplier.Name" class="form-control" style="font-family: Arial, sans-serif;" />
+                    <span asp-validation-for="Supplier.Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Supplier.Address" class="form-label" style="font-weight: bold; color: #333;">Endereço:</label>
+                    <input asp-for="Supplier.Address" class="form-control" style="font-family: Arial, sans-serif;" />
+                    <span asp-validation-for="Supplier.Address" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Supplier.CNPJ" class="form-label" style="font-weight: bold; color: #333;">CNPJ:</label>
+                        <input asp-for="Supplier.CNPJ" class="form-control" style="font-family: Arial, sans-serif;" />
+                        <span asp-validation-for="Supplier.CNPJ" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Supplier.CEP" class="form-label" style="font-weight: bold; color: #333;">CEP:</label>
+                        <input asp-for="Supplier.CEP" class="form-control" style="font-family: Arial, sans-serif;" />
+                        <span asp-validation-for="Supplier.CEP" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Supplier.CreatedAt" class="form-label" style="font-weight: bold; color: #333;">Data de Criação:</label>
+                    <input asp-for="Supplier.CreatedAt" class="form-control" style="font-family: Arial, sans-serif;" />
+                    <span asp-validation-for="Supplier.CreatedAt" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a asp-page="Index" class="btn btn-danger me-md-2 btn-lg" role="button">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Voltar</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     

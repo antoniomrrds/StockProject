@@ -5,64 +5,97 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Fornecedores</h1>
 
-<p>
-    <a asp-page="Create">Criar Novo</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier[0].Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier[0].CNPJ)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier[0].CEP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier[0].CreatedAt)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Supplier)
-        {
+<div class="container">
+    <h1 class="my-4">Fornecedores</h1>
+
+    <div class="btn-toolbar">
+     
+    </div>
+
+    
+<div id="toolbar">
+        <a asp-page="Create" class="btn btn-primary"><i class="bi bi-plus"></i> Criar Novo</a>
+        <button class="btn btn-primary" id="printTable"><i class="mr-2 bi bi-printer"></i> Imprimir</button>
+</div>
+
+    <table id="table"
+           data-pagination="true"
+           data-filter-control="true"
+           data-search="true"
+           data-click-to-select="true"
+           data-toolbar="#toolbar"
+           data-show-columns="true"
+           data-show-toggle="true"
+           class="table table-striped table-bordered table-responsive">
+        <thead class="table-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CNPJ)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CEP)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
-                <td>
-                    <a asp-page="./Edit" class="btn btn-warning btn-sm mr-1" asp-route-id="@item.Id">
-                        <i class="bi bi-pencil-square"></i>
-                    </a>
-                    <a asp-page="./Details" class="btn btn-info btn-sm mr-1" asp-route-id="@item.Id">
-                        <i class="bi bi-info-circle"></i>
-
-                    </a>
-                    <a asp-page="./Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">
-                        <i class="bi bi-trash"></i>
-
-                    </a>
+                <th data-field="Name" data-sortable="true">Nome</th>
+                <th data-field="Address">Endereço</th>
+                <th data-field="CNPJ">CNPJ</th>
+                <th data-field="CEP">CEP</th>
+                <th data-field="CreatedAt"
+                    data-filter-control="select"
+                    data-filter-datepicker-options='{"format": "dd/mm/yyyy", "autoclose": true}'
+                    data-filter-date-format="dd/mm/yyyy"
+                    data-sortable="true">Data de Criação</th>
+                <th data-field="Actions" data-sortable="false">Ações</th>
             </tr>
+        </thead>
+        <tbody>
+
+        @if (Model.Supplier == null || !Model.Supplier.Any())
+        {
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle bi flex-shrink-0 me-2"></i>
+                    <span>
+                        Cadastre Fornecedores !!!
+                    </span>
+                </div>           
         }
-    </tbody>
-</table>
+        else
+        {
+                @foreach (var item in Model.Supplier)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CNPJ)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CEP)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                        <td>
+                            <a asp-page="./Edit" class="btn btn-warning btn-sm me-1" asp-route-id="@item.Id">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-page="./Details" class="btn btn-info btn-sm me-1" asp-route-id="@item.Id">
+                                <i class="bi bi-info-circle"></i>
+                            </a>
+                            <a asp-page="./Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.3/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.3/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script>
+        $(function () {
+            var $table = $('#table').bootstrapTable({
+                formatNoMatches: function () {
+                    return 'Nenhum registro encontrado';
+                }
+            });       
+            $('#printTable').on('click', function () {
+                window.print();
+            });
+
+        });
+    </script>
+}

@@ -20,3 +20,18 @@ html {
 body {
     margin-bottom: 60px;
 }
+.card-title {
+    font-size: 1.5rem;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    font-family: Arial, sans-serif;
+}
+
+
+
