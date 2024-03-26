@@ -29,8 +29,9 @@ namespace StockProject.Pages.Material
                 return NotFound();
             }
 
-            var material = await _context.Materials.FirstOrDefaultAsync(m => m.Id == id);
-
+            var material = await _context.Materials
+                .Include(m => m.Supplier)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (material == null)
             {
                 return NotFound();

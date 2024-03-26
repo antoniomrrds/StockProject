@@ -38,8 +38,12 @@
                     </dl>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a asp-page="Index" class="btn btn-danger me-md-2 btn-lg fs-5" role="button">Cancelar</a>
-                        <a asp-page="./Edit" asp-route-id="@Model.Supplier.Id" class="btn btn-warning btn-lg fs-5">Editar</a>
+                        <a asp-page="Index" class="btn btn-danger me-md-2 btn-lg fs-5" role="button">
+                            <i class="bi bi-box-arrow-left"></i>
+                            Cancelar</a>
+                        <a asp-page="./Edit" asp-route-id="@Model.Supplier.Id" class="btn btn-warning btn-lg fs-5">
+                            <i class="bi bi-pencil-square"></i>
+                            Editar</a>
                     </div>
                 </div>
             </div>

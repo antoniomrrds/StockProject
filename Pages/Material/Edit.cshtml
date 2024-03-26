@@ -5,70 +5,106 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="container my-4">
+    <div class="card border-info">
+        <div class="card-body">
+            <h1 class="card-title text-center fs-4 fw-bold">Material</h1>
 
-<h4>Material</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Material.Id" />
-            <div class="form-group">
-                <label asp-for="Material.SupplierId" class="control-label"></label>
-                <select asp-for="Material.SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
-                <span asp-validation-for="Material.SupplierId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.Code" class="control-label"></label>
-                <input asp-for="Material.Code" class="form-control" />
-                <span asp-validation-for="Material.Code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.Name" class="control-label"></label>
-                <input asp-for="Material.Name" class="form-control" />
-                <span asp-validation-for="Material.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.Description" class="control-label"></label>
-                <input asp-for="Material.Description" class="form-control" />
-                <span asp-validation-for="Material.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.FiscalCode" class="control-label"></label>
-                <input asp-for="Material.FiscalCode" class="form-control" />
-                <span asp-validation-for="Material.FiscalCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.Specie" class="control-label"></label>
-                <input asp-for="Material.Specie" class="form-control" />
-                <span asp-validation-for="Material.Specie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.CreatedAt" class="control-label"></label>
-                <input asp-for="Material.CreatedAt" class="form-control" readonly />
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.CreatedBy" class="control-label"></label>
-                <input asp-for="Material.CreatedBy" class="form-control" />
-                <span asp-validation-for="Material.CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Material.UpdatedBy" class="control-label"></label>
-                <input asp-for="Material.UpdatedBy" class="form-control" />
-                <span asp-validation-for="Material.UpdatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Material.Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Material.SupplierId" class="form-label">Fornecedor:</label>
+                    <select asp-for="Material.SupplierId" class="form-control" asp-items="ViewBag.SupplierId">
+                        <option value="">Selecione o Fornecedor</option>
+                    </select>
+                    <span asp-validation-for="Material.SupplierId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">QRCode</label>
+                    <input id="qrcode" class="form-control" readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Material.Code" class="form-label">Código:</label>
+                    <input asp-for="Material.Code" class="form-control" />
+                    <span asp-validation-for="Material.Code" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Material.Name" class="form-label">Nome:</label>
+                    <input asp-for="Material.Name" class="form-control" />
+                    <span asp-validation-for="Material.Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Material.Description" class="form-label">Descrição:</label>
+                    <input asp-for="Material.Description" class="form-control" />
+                    <span asp-validation-for="Material.Description" class="text-danger"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Material.FiscalCode" class="form-label">Código Fiscal:</label>
+                        <input asp-for="Material.FiscalCode" class="form-control" />
+                        <span asp-validation-for="Material.FiscalCode" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Material.Specie" class="form-label">Espécie:</label>
+                        <input asp-for="Material.Specie" class="form-control" />
+                        <span asp-validation-for="Material.Specie" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Material.CreatedBy" class="form-label">Criado Por:</label>
+                        <input asp-for="Material.CreatedBy" class="form-control" />
+                        <span asp-validation-for="Material.CreatedBy" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Material.UpdatedBy" class="form-label">Atualizado Por:</label>
+                        <input asp-for="Material.UpdatedBy" class="form-control" />
+                        <span asp-validation-for="Material.UpdatedBy" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a asp-page="Index" class="btn btn-danger me-md-2 btn-lg" role="button">
+                        <i class="bi bi-box-arrow-left"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-warning btn-lg">
+                        <i class="bi bi-pencil-square"></i>
+                        Editar
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $('#Material_SupplierId').change(function () {
+            var selectedSupplierId = $(this).val();
+            if (selectedSupplierId) {
+                $.get('/Material/Create?handler=GetQRCode&id=' + selectedSupplierId, function (qrCode) {
+                    $('#qrcode').val(qrCode);
+                });
+            } else {
+                $('#qrcode').val("");
+            }
+        });
+        var selectedSupplierId = $('#Material_SupplierId').val();
+        if (selectedSupplierId) {
+            $.get('/Material/Create?handler=GetQRCode&id=' + selectedSupplierId, function (qrCode) {
+                $('#qrcode').val(qrCode);
+            });
+        }
+    </script>
 }

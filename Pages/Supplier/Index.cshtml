@@ -18,6 +18,17 @@
         <a asp-page="Create" class="btn btn-primary"><i class="bi bi-plus"></i> Criar Novo</a>
         <button class="btn btn-primary" id="printTable"><i class="mr-2 bi bi-printer"></i> Imprimir</button>
 </div>
+   @if (Model.Supplier == null || !Model.Supplier.Any())
+        {
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle bi flex-shrink-0 me-2"></i>
+                    <span>
+                        Cadastre Fornecedores !!!
+                    </span>
+                </div>           
+        }
+        else
+        {
 
     <table id="table"
            data-pagination="true"
@@ -44,17 +55,7 @@
         </thead>
         <tbody>
 
-        @if (Model.Supplier == null || !Model.Supplier.Any())
-        {
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <i class="bi bi-exclamation-triangle bi flex-shrink-0 me-2"></i>
-                    <span>
-                        Cadastre Fornecedores !!!
-                    </span>
-                </div>           
-        }
-        else
-        {
+     
                 @foreach (var item in Model.Supplier)
                 {
                     <tr>
@@ -76,10 +77,10 @@
                         </td>
                     </tr>
                 }
-            }
         </tbody>
 
     </table>
+            }
 </div>
 
 @section Scripts {

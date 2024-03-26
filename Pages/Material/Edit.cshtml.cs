@@ -36,7 +36,7 @@ namespace StockProject.Pages.Material
                 return NotFound();
             }
             Material = material;
-            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Address");
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name");
             return Page();
         }
 
