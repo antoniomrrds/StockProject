@@ -1,8 +1,5 @@
-﻿using NuGet.Protocol.Plugins;
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
 
 namespace StockProject.Models
 {
@@ -35,10 +32,10 @@ namespace StockProject.Models
         public DateTime CreatedAt { get; set; }
 
         public string QRCode { get; set; } = string.Empty;
+
         public string GenerateQRCode()
         {
             return $"{CNPJ}-{CEP}/CAD.{CreatedAt:dd/MM/yyyy}";
         }
-      
     }
 }

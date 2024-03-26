@@ -1,17 +1,24 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using StockProject.Data;
 
-namespace StockProject.Pages;
-
-public class IndexModel : PageModel
+namespace StockProject.Pages
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    public class IndexModel : PageModel
     {
-        _logger = logger;
-    }
+        private readonly ApplicationDbContext _context;
 
-    public void OnGet()
-    {
+        public IndexModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public int TotalMaterials { get; set; }
+        public int TotalSuppliers { get; set; }
+
+        public void OnGet()
+        {
+            TotalMaterials = _context.Materials.Count();
+            TotalSuppliers = _context.Suppliers.Count();
+        }
     }
 }

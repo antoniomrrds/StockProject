@@ -7,77 +7,39 @@
 <div class="container-fluid">
     <section>
         <div class="row">
-            <div class="col-12 mt-3 mb-1">
-                <h5 class="text-uppercase">FeedBack</h5>
-                <p>Estatistica do Estoque.</p>
+            <div class="col-12 mt-3 mb-4">
+                <h2 class="text-uppercase text-primary">Bem-vindo ao StockProject</h2>
+                <p class="text-muted">Gerencie seu estoque de forma eficiente e organizada.</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card shadow-sm">
+            <div class="col-xl-6 mb-4">
+                <div class="card shadow">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center p-md-1">
+                        <h4 class="mb-3">Total de Produtos</h4>
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-box text-info fs-2 me-4"></i>
+                                <i class="bi bi-box text-success fs-2 me-3"></i>
                                 <div>
-                                    <h4 class="mb-0">Quantidade de Produtos</h4>
+                                    <h2 class="h1 mb-0">@Model.TotalMaterials</h2>
+                                    <p class="text-muted mb-0">Produtos</p>
                                 </div>
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="h1 mb-0">product</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center p-md-1">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-layers text-warning fs-2 me-4"></i>
-                                <div>
-                                    <h4 class="mb-0">Total de categorias</h4>
-                                </div>
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="h1 mb-0">category</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="mb-3">Total Produtos</h4>
-                        <div class="d-flex justify-content-between align-items-center p-md-1">
-                            <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-wallet text-success fs-2 me-3"></i>
-                                <div>
-                                </div>
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="h1 mb-0 me-3">totalProductValue%</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card shadow-sm">
+            <div class="col-xl-6 mb-4">
+                <div class="card shadow">
                     <div class="card-body">
                         <h4 class="mb-3">Total de Fornecedores</h4>
-                        <div class="d-flex justify-content-between align-items-center p-md-1">
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-building text-danger fs-2 me-3"></i>
+                                <i class="bi bi-truck text-danger fs-2 me-3"></i>
                                 <div>
+                                    <h2 class="h1 mb-0">@Model.TotalSuppliers</h2>
+                                    <p class="text-muted mb-0">Fornecedores</p>
                                 </div>
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="h1 mb-0 me-2"> provider</h2>
                             </div>
                         </div>
                     </div>
