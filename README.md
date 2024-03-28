@@ -34,6 +34,7 @@ docker-compose up -d
 4. **Execute as migrações para preparar o banco de dados:**
 
 ```bash
+dotnet tool install --global dotnet-ef
 dotnet ef database update
 ```
 
