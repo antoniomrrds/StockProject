@@ -69,6 +69,11 @@ dotnet ef database update
 ## Screenshots 📸
 - Home
   ![image](https://github.com/antoniomrrds/StockProject/assets/62305370/ea0c1d62-18ab-4bac-9b2a-c83b61e2cc32)
+  
+## Vídeo de Demonstração 🎥
+
+[![Vídeo de demonstração](https://img.youtube.com/vi/DjAbKKNL3hI/0.jpg)](https://www.youtube.com/watch?v=DjAbKKNL3hI)
+
 
 ## Stack utilizada 🛠️
 **Front-end:**  
